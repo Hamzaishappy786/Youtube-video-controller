@@ -11,10 +11,11 @@ yarn.lock
 *~
 .DS_Store
 
-# Build artifacts
+# Build artifacts & release
 dist/
 build/
 *.zip
+release/
 
 # Logs
 *.log
