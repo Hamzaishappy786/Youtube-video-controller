@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <span class="logo">✊</span>
+    <div>
+      <h1>GestureYT</h1>
+      <p class="sub">Hand-gesture YouTube control</p>
+    </div>
+  </header>
+
+  <section class="toggles">
+    <label class="row">
+      <span>Gesture control</span>
+      <input type="checkbox" id="enabled">
+      <span class="switch"></span>
+    </label>
+    <label class="row">
+      <span>Camera preview</span>
+      <input type="checkbox" id="previewVisible">
+      <span class="switch"></span>
+    </label>
+  </section>
+
+  <section class="cheatsheet">
+    <h2>Gestures</h2>
+    <ul>
+      <li><span class="g">✊ 1.5s</span><span>Wake / Sleep</span></li>
+      <li><span class="g">🖐 Flat hand</span><span>Pause / Resume</span></li>
+      <li><span class="g">☝ 1 finger</span><span>Speed 1×</span></li>
+      <li><span class="g">✌ 2 fingers</span><span>Speed 2×</span></li>
+      <li><span class="g">🤟 3–4 fingers</span><span>Speed 3–4×</span></li>
+      <li><span class="g">👈 Thumb left</span><span>Rewind 10s</span></li>
+      <li><span class="g">👉 Thumb right</span><span>Forward 10s</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    Camera runs only on YouTube tabs, fully on-device.
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
