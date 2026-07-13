@@ -72,6 +72,12 @@
     document.querySelector('#movie_player') ||
     document.querySelector('.html5-video-container');
 
+  /** Check if we're on a YouTube video page (not homepage). */
+  const isVideoPage = () => {
+    // Check URL for /watch?v= pattern
+    return /\/watch\?.*v=/.test(location.pathname + location.search);
+  };
+
   const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
   /** Post a namespaced message to the MAIN-world engine. */
@@ -495,6 +501,11 @@
   }
 
   async function enable() {
+    // Only enable if on a video page
+    if (!isVideoPage()) {
+      disable();
+      return;
+    }
     pipContainer?.classList.remove('hidden');
     statusEl?.classList.remove('hidden');
     pipToggleBtn?.classList.remove('hidden');
@@ -557,9 +568,15 @@
     post(document.hidden ? 'STOP' : 'START');
   });
 
-  // YouTube SPA navigation — re-attach the HUD once the new player renders.
+  // YouTube SPA navigation — re-attach the HUD and check if camera should be on/off.
   window.addEventListener('yt-navigate-finish', () => {
-    setTimeout(ensureHUD, 1000);
+    setTimeout(() => {
+      ensureHUD();
+      // Re-evaluate whether camera should be on based on new page type
+      if (settings.enabled) {
+        isVideoPage() ? enable() : disable();
+      }
+    }, 1000);
   });
 
   // ─────────────────────────────────────────────
@@ -577,7 +594,8 @@
     updateStatusUI();
     applyPreviewVisibility();
 
-    if (settings.enabled) await enable();
+    // Only enable camera if on a video page
+    if (settings.enabled && isVideoPage()) await enable();
     else disable();
   }
 
