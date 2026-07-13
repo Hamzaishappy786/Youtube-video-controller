@@ -1,0 +1,102 @@
+/* GestureYT popup — dark, YouTube-adjacent aesthetic */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 280px;
+  background: #0f0f0f;
+  color: #f1f1f1;
+  font-family: Roboto, 'Segoe UI', sans-serif;
+  font-size: 13px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #272727;
+}
+
+.logo {
+  font-size: 26px;
+  background: linear-gradient(135deg, #dc0000, #960000);
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 { font-size: 15px; font-weight: 600; }
+.sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+/* ---------- Toggle rows ---------- */
+.toggles { padding: 10px 16px; border-bottom: 1px solid #272727; }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.row input { display: none; }
+
+.switch {
+  width: 34px;
+  height: 18px;
+  border-radius: 9px;
+  background: #3f3f3f;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.row input:checked + .switch { background: #dc0000; }
+.row input:checked + .switch::after { transform: translateX(16px); }
+
+/* ---------- Cheat sheet ---------- */
+.cheatsheet { padding: 10px 16px; }
+.cheatsheet h2 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.cheatsheet ul { list-style: none; }
+
+.cheatsheet li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  color: #ddd;
+}
+
+.cheatsheet .g { color: #fff; font-weight: 500; }
+.cheatsheet li span:last-child { color: #9a9a9a; }
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 10px 16px 12px;
+  font-size: 10.5px;
+  color: #777;
+  border-top: 1px solid #272727;
+}
